@@ -1,0 +1,69 @@
+<script src="tableau-2.js"></script>
+<scripty src="tableau_v8"></scripty>
+
+<script>
+var viz1=null,viz2=null,viz3=null,viz4=null;
+function initViz(keyword) {
+	var mainVizOptions = {
+				hideTabs: true,
+				hideToolbar: true,
+			 };
+			 
+    var containerDiv3= document.getElementById("vizContainer3"),
+    url3= "https://public.tableau.com/views/banner_tile/Dashboard1&embed=y&Outcode="+keyword;
+    //"https://public.tableau.com/views/test4_30/Dashboard1?:embed=y&:display_count=yes"+keyword;
+	if(viz3 != null)
+	{
+		viz3.dispose();
+	}
+    viz3 = new tableauSoftware.Viz(containerDiv3, url3,mainVizOptions); 
+    var containerDiv1 = document.getElementById("vizContainer1"),
+    url1 = "https://public.tableau.com/views/transport_tile/Dashboard1&embed=yOutcode="+keyword;
+    //"https://public.tableau.com/views/test4_30/Dashboard1?:embed=y&:display_count=yes"+keyword;
+	if(viz1 != null)
+	{
+		viz1.dispose();
+	}
+    viz1 = new tableauSoftware.Viz(containerDiv1, url1,mainVizOptions); 
+
+    var containerDiv2= document.getElementById("vizContainer2"),
+    url2= "https://public.tableau.com/views/price_tile/Dashboard1&embed=y&Outcode="+keyword;
+    //"https://public.tableau.com/views/test4_30/Dashboard1?:embed=y&:display_count=yes"+keyword;
+	if(viz2 != null)
+	{
+		viz2.dispose();
+	}
+    viz2 = new tableauSoftware.Viz(containerDiv2, url2,mainVizOptions); 
+
+    var containerDiv4= document.getElementById("vizContainer4"),
+    url4= "https://public.tableau.com/views/food_tile/Dashboard1&embed=y&Outcode="+keyword;
+    //"https://public.tableau.com/views/test4_30/Dashboard1?:embed=y&:display_count=yes"+keyword;
+	if(viz4 != null)
+	{
+		viz4.dispose();
+	}
+    viz4 = new tableauSoftware.Viz(containerDiv4, url4,mainVizOptions); 
+
+
+}
+//https://10ay.online.tableau.com/t/idkltd/views/test2/Dashboard1?:embed=y&Outcode=BR7
+function load_viz()
+{
+	var keyword = document.getElementById("keyword").value;
+	
+	initViz(keyword);
+	return false;
+}
+</script>
+<body>
+<div >
+<input type="text" id="keyword" />
+<input type="submit" value="Load Viz" onclick="load_viz();"/>
+</div>
+<div id="vizContainer3" ></div>
+<div id="vizContainer1" style="float:left"></div>
+<div id="vizContainer2"></div>
+<div id="vizContainer4" ></div>
+
+</body>
+

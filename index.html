@@ -1,0 +1,125 @@
+<head>
+<style>
+.viz_div{width:400px;height:400px;overflow: hidden}
+.f_left{float:left;}
+.container{width:30%;min-width:400px;}
+.clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+.full{width: 1200px;margin-left:auto;margin-right:auto;}
+</style>
+<script src="tableau-2.js"></script>
+
+<script>
+var viz= [null,null,null,null,null,null];
+function initViz(keyword) {
+		var mainVizOptions = {
+				hideTabs: true,
+				hideToolbar: true,
+			 };
+    var containerDiv1 = document.getElementById("vizContainer1");
+    url1 = "https://public.tableau.com/views/price_tile/Dashboard1&embed=y&:toolbar=no&Outcode="+keyword;
+	if(viz[0] != null)
+	{
+		viz[0].dispose();
+	}
+    viz[0] = new tableau.Viz(containerDiv1, url1,mainVizOptions); 
+
+    var containerDiv2= document.getElementById("vizContainer2"),
+    url2= "https://public.tableau.com/views/transport_tile/Dashboard1&:toolbar=no&embed=y&Outcode="+keyword;
+	if(viz[1] != null)
+	{
+		viz[1].dispose();
+	}
+    viz[1] = new tableau.Viz(containerDiv2, url2,mainVizOptions); 
+
+    var containerDiv3= document.getElementById("vizContainer3");
+    url3= "https://public.tableau.com/views/food_tile/Dashboard1&embed=y&Outcode="+keyword;
+	if(viz[2] != null)
+	{
+		viz[2].dispose();
+	}
+    viz[2] = new tableau.Viz(containerDiv3, url3,mainVizOptions); 
+
+    var containerDiv4= document.getElementById("vizContainer4"),
+    url4= "https://public.tableau.com/views/school_tile/Dashboard1&embed=y&Outcode="+keyword;
+	if(viz[3] != null)
+	{
+		viz[3].dispose();
+	}
+    viz[3] = new tableau.Viz(containerDiv4, url4,mainVizOptions); 
+
+    var containerDiv5= document.getElementById("vizContainer5"),
+    url5= "https://public.tableau.com/views/COL_tile/Dashboard1&embed=y&Outcode="+keyword;
+	if(viz[4] != null)
+	{
+		viz[4].dispose();
+	}
+    viz[4] = new tableau.Viz(containerDiv5, url5,mainVizOptions); 
+
+    var containerDiv6= document.getElementById("vizContainer6"),
+    url6= "https://public.tableau.com/views/zoopla_tile/Dashboard1&embed=y&Outcode="+keyword;
+	if(viz[5] != null)
+	{
+		viz[5].dispose();
+	}
+    viz[5] = new tableau.Viz(containerDiv6, url6,mainVizOptions); 
+
+
+}
+//https://10ay.online.tableau.com/t/idkltd/views/test2/Dashboard1?:embed=y&Outcode=BR7
+function load_viz()
+{
+	var keyword = document.getElementById("keyword").value;
+	
+	initViz(keyword);
+	return false;
+}
+/*
+window.addEventListener('resize', resizeViz);
+
+function resizeViz() {
+	for(var i=0;i<viz.length;i++)
+	{
+    var width = document.getElementById("vizContainer" + (i+1)).clientWidth;
+    console.log(width);
+    //var height = document.getElementById("vizContainer" + (i+1)).clientHeight;
+
+	if(viz[i] != null)
+   	 viz[i].setFrameSize(width, width);
+	document.getElementById("vizContainer" + (i+1)).setAttribute("style","height:"+(width)+"px");
+	}
+}
+*/
+</script>
+</head>
+<body>
+<div >
+<input type="text" id="keyword" />
+<input type="submit" value="Load Viz" onclick="load_viz();"/>
+</div>
+<div class="full">
+<div class="container f_left">
+<div id="vizContainer1" class="viz_div f_left" style="float:left;overflow:hidden;"></div>
+</div>
+<div class="container f_left">
+<div id="vizContainer2" class="viz_div f_left"  style="float:left;overflow:hidden;;"></div>
+</div>
+<div class="container f_left">
+<div id="vizContainer3" class="viz_div"  style=";overflow:hidden;"></div>
+</div>
+<div class="clearfix"></div>
+<div class="container f_left">
+<div id="vizContainer4" class="viz_div f_left"  style="float:left;;overflow:hidden;"></div>
+</div>
+<div class="container f_left">
+<div id="vizContainer5" class="viz_div f_left"  style="float:left;overflow:hidden;;"></div>
+</div>
+<div class="container f_left">
+<div id="vizContainer6"  class="viz_div" style=";overflow:hidden;"></div>
+</div>
+</div>
+</body>
+
